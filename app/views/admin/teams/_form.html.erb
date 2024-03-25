@@ -1,0 +1,21 @@
+<%= form_with model: @team, method: method, url: url, class: 'team_form', local: true do |f| %>
+  <%= f.label :name, 'Name:' %><br>
+  <%= f.text_field :name %><br>
+  
+  <%= f.label :seed, 'Seed:' %><br>
+  <%= f.number_field :seed, in: 1..16 %><br>
+
+  <%= f.label :conference, 'Conference:' %><br>
+  <%= f.select :conference, options_for_select(['ACC', 'Big 12', 'Big East', 'Big Ten', 'Pac-12', 'SEC', 'American', 'A-10', 'MVC', 'WCC', 'C-USA', 'MAC', 'Mountain West', 'Sun Belt', 'CAA', 'MEAC', 'SWAC', 'Other']), prompt: 'Select Conference' %>
+  
+  <% if @team.conference == 'Other' %>
+    <%= f.label :other_conference, 'Other Conference:' %><br>
+    <%= f.text_field :other_conference %><br>
+  <% end %>
+  
+  <%= f.label :region, 'Region:' %><br>
+  <%= f.select :region, options_for_select(['East', 'West', 'Midwest', 'South']), prompt: 'Select Region' %><br>
+
+  <%= f.submit %>
+<% end %>
+

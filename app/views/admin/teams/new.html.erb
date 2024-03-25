@@ -1,0 +1,12 @@
+<div class="nav-container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-text">Admin Dashboard</p>
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Dashboard', admin_dashboard_index_path, style: 'pull-right' %>
+      <%= link_to 'Teams', admin_teams_path, style: 'pull-right' %>
+      <%= link_to 'Leagues', admin_leagues_path, style: 'pull-right' %></li>
+    </ul>
+  </nav>
+</div>
+
+<%= render partial: 'form', locals: { method: :post, url: admin_teams_path, class: 'teams_form', local: true} %>

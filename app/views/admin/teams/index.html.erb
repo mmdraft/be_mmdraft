@@ -1,0 +1,30 @@
+<div class="nav-container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <p class="navbar-text">Admin Dashboard</p>
+    <ul class="nav navbar-nav">
+      <li><%= link_to 'Dashboard', admin_dashboard_index_path, style: 'pull-right' %>
+      <%= link_to 'Teams', admin_teams_path, style: 'pull-right' %>
+      <%= link_to 'Leagues', admin_leagues_path, style: 'pull-right' %></li>
+    </ul>
+  </nav>
+</div>
+
+
+<body>
+  <%= link_to 'Add New Team', new_admin_team_path %>
+  <div class="row">
+    <p class='mr-auto col-sm-5'>Teams</p>
+  </div>
+  <ul class='mr-auto col-sm-4'>
+    <% @teams.each do |t| %>
+      <section id="toppy-<%= t.id %>">
+        <li>
+          <%= link_to "#{t.name}", admin_team_path(t) %> - 
+          <%= t.seed %> - <%= t.actual_conference %> - <%= t.region %> - 
+          <%= button_to "Delete", admin_team_path(t), method: :delete %></li>
+      </section>
+    <% end %>
+  </ul>
+
+   <%= button_to "Delete All Teams", destroy_all_admin_teams_path, method: :post, data: { confirm: 'Are you sure you want to delete all teams?' }, class: 'btn btn-danger' %>
+</body>

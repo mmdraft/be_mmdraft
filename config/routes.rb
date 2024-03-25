@@ -15,12 +15,12 @@ Rails.application.routes.draw do
       end
       resources :leagues, only: %i[create show update destroy] do
         resources :user_leagues, only: %i[index], controller: 'leagues/user_leagues'
+        resources :draft_picks, only: %i[index], controller: 'leagues/draft_picks'
       end
       resources :user_leagues, only: %i[show create destroy] do
-        resources :draft_picks, only: %i[index], controller: 'user_leagues/draft_picks'
+        resources :draft_picks, only: %i[index create], controller: 'user_leagues/draft_picks'
       end
       resources :teams, only: %i[index show]
-      resources :draft_picks, only: %i[create]
     end
   end
 end

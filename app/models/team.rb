@@ -19,11 +19,10 @@ class Team < ApplicationRecord
   def actual_conference
     conference == 'Other' ? other_conference : conference
   end
-  
+
   private
 
   def validate_max_teams
     errors.add(:base, "Cannot exceed #{MAX_TEAMS} teams") if Team.count >= MAX_TEAMS
   end
-
 end

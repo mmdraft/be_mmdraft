@@ -21,6 +21,9 @@ Rails.application.routes.draw do
         resources :draft_picks, only: %i[index create], controller: 'user_leagues/draft_picks'
       end
       resources :teams, only: %i[index show]
+      resource :auth, only: [], controller: 'auth' do
+        post :google_auth, on: :collection
+      end
     end
   end
 end
